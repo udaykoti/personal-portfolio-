@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uday Koti Goli | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #spline-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    .container {
+      padding: 60px 10%;
+    }
+
+    #header {
+      height: 100vh;
+      width: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('background.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      transition: transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      transform: perspective(300px) rotateY(15deg);
+    }
+
+    nav ul li a::after {
+      content: '';
+      width: 0;
+      height: 2px;
+      background: #ff004f;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      transition: 0.4s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .header-text {
+      margin-top: 20%;
+    }
+
+    .header-text h1 {
+      font-size: 50px;
+      transform: rotateY(0deg);
+      transition: transform 0.6s ease-in-out;
+    }
+
+    #header:hover .header-text h1 {
+      transform: rotateY(10deg);
+    }
+
+    .header-text h1 span {
+      color: #ff004f;
+    }
+
+    #about {
+      color: #ababab;
+    }
+
+    .sub-title {
+      font-size: 40px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .tab-titles {
+      display: flex;
+      margin: 20px 0;
+    }
+
+    .tab-links {
+      margin-right: 50px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .tab-links::after {
+      content: '';
+      width: 0;
+      height: 3px;
+      background: #ff004f;
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      transition: 0.3s;
+    }
+
+    .tab-links.active-link::after {
+      width: 100%;
+    }
+
+    .tab-contents {
+      display: none;
+    }
+
+    .tab-contents.active-tab {
+      display: block;
+    }
+
+    .tab-contents ul li {
+      list-style: none;
+      margin: 10px 0;
+    }
+
+    .tab-contents ul li span {
+      color: #ff004f;
+      font-weight: 600;
+    }
+
+    #portfolio .work-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+      perspective: 1000px;
+    }
+
+    .work {
+      background: #1f1f1f;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.6s ease;
+      padding: 20px;
+      transform-style: preserve-3d;
+    }
+
+    .work:hover {
+      transform: rotateY(20deg);
+      background: #2a2a2a;
+    }
+
+    .layer {
+      padding: 20px;
+      backface-visibility: hidden;
+    }
+
+    .layer h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #ff004f;
+    }
+
+    #contact .contact-form {
+      margin-top: 30px;
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #262626;
+      border: none;
+      color: #fff;
+      border-radius: 8px;
+      resize: none;
+    }
+
+    .contact-form form button {
+      background: #ff004f;
+      color: #fff;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form form button:hover {
+      background: #e60045;
+    }
+
+    @media (max-width: 768px) {
+      .header-text h1 {
+        font-size: 36px;
+      }
+
+      nav ul li {
+        margin: 0 10px;
+      }
+
+      .sub-title {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3D Background -->
+  <div id="spline-bg">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/eEzGDqOrixYN-gGc/scene.splinecode"></spline-viewer>
+  </div>
+
+  <!-- Header -->
+  <div id="header">
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-text">
+        <h1>Hi, I'm <span>Uday Koti Goli</span><br>Full Stack Developer</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="container">
+    <h2 class="sub-title">About Me</h2>
+    <div class="tab-titles">
+      <p class="tab-links active-link" onclick="window.open('https://www.linkedin.com/notifications/?filter=my_posts_all', '_blank')">Skills</p>
+      <p class="tab-links" onclick="openTab('experience')">Experience</p>
+      <p class="tab-links" onclick="openTab('education')">Education</p>
+    </div>
+    <div class="tab-contents active-tab" id="skills">
+      <h3>Skills</h3>
+      <ul>
+        <li><span>Frontend</span><br>HTML, CSS, JavaScript, React</li>
+        <li><span>Backend</span><br>Node.js, Express.js</li>
+        <li><span>Database</span><br>MySQL, SQL</li>
+        <li><span>Link to LinkedIn</span><br><a href="https://www.linkedin.com/notifications/?filter=my_posts_all" target="_blank" style="color: #ff004f;">Visit LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="tab-contents" id="experience">
+      <ul>
+        <li><span>Projects</span><br>Netflix Clone, Instagram Clone, Food Website</li>
+      </ul>
+    </div>
+    <div class="tab-contents" id="education">
+      <ul>
+        <li><span>B.Tech - CSE</span><br>2nd Year, CGPA: 6.5</li>
+        <li><span>SSC (Grade 10)</span><br>Vijetha High School</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Portfolio -->
+  <div id="portfolio" class="container">
+    <h2 class="sub-title">My Work</h2>
+    <div class="work-list">
+      <div class="work">
+        <div class="layer">
+          <h3>Netflix Clone</h3>
+          <p>A responsive clone of Netflix UI using HTML, CSS, JS</p>
+        </div>
+      </div>
+      <div class="work">
+        <div class="layer">
+          <h3>Instagram Clone</h3>
+          <p>Frontend and UI design of Instagram clone using modern CSS</p>
+        </div>
+      </div>
+      <div class="work">
+        <div class="layer">
+          <h3>Personal Portfolio Website</h3>
+          <p>A responsive portfolio showcasing my skills, projects, and contact form with a 3D background using Spline</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="container">
+    <h2 class="sub-title">Contact Me</h2>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="6" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tab Script -->
+  <script>
+    const tabLinks = document.querySelectorAll('.tab-links');
+    const tabContents = document.querySelectorAll('.tab-contents');
+
+    function openTab(tabName) {
+      tabLinks.forEach(link => link.classList.remove('active-link'));
+      tabContents.forEach(content => content.classList.remove('active-tab'));
+      event.currentTarget.classList.add('active-link');
+      document.getElementById(tabName).classList.add('active-tab');
+    }
+  </script>
+</body>
+</html>
